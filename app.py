@@ -18,13 +18,10 @@ html_template = '''
     <style>
         body { font-family: Arial, sans-serif; margin: 50px; background: #f0f0f0; }
         .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
-        textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        textarea { width: 100%%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
         input[type=submit] { margin-top: 10px; padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
-        input[type=submit]:hover { background: #0056b3; }
         .note { margin: 20px 0; padding: 15px; background: #f9f9f9; border-left: 4px solid #007bff; border-radius: 5px; }
         .timestamp { color: #666; font-size: 0.9em; margin-bottom: 5px; }
-        h2 { color: #333; margin-top: 0; }
-        h3 { color: #555; margin-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -58,7 +55,6 @@ def index():
             conn.close()
         return redirect(url_for('index'))
     
-    # GET request - display notes
     conn = pymysql.connect(**db_config)
     cur = conn.cursor()
     cur.execute("SELECT id, note_text, DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') as created_at FROM notes ORDER BY created_at DESC")
